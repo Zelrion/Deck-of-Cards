@@ -1,0 +1,30 @@
+<ng-container *ngIf="deckOfCards$ | async as deck; else loading">
+    <mat-drawer-container>
+        <mat-drawer mode="side" opened>
+            <app-doc-controller [deck]="deck"></app-doc-controller>
+        </mat-drawer>
+        <mat-drawer-content>
+            <mat-tab-group>
+                <mat-tab label="Cards in Hand ({{deck.drawnCards.length}})" class="mat-elevation-z2">
+                    <div class="card-display" [@cardEnterAnimation]="deck.drawnCards.length">
+                        <ng-container *ngFor="let card of deck.drawnCards">
+                            <app-doc-card [card]="card" (cardWithdrawn)="deck.withdraw(card)"></app-doc-card>
+                        </ng-container>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Cards in Deck ({{deck.cards.length}})" class="mat-elevation-z2">
+                    <div class="card-display" [@cardEnterAnimation]="deck.cards.length">
+                        <ng-container *ngFor="let card of deck.cards">
+                            <app-doc-card [card]="card"></app-doc-card>
+                        </ng-container>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</ng-container>
+<ng-template #loading>
+    <div class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>

@@ -1,0 +1,23 @@
+<div *ngIf="deck">
+    <div class="deck-info">
+        <mat-label>Cards in Deck: {{deck.cards.length}}</mat-label>
+        <mat-label>Cards in Hand: {{deck.drawnCards.length}}</mat-label>
+    </div>
+    <div class="control">
+        <mat-label>Draw Count Slider</mat-label>
+        <div class="draw-slider-wrapper">
+            <mat-label class="draw-slider-label">0</mat-label>
+            <mat-slider #drawSlider class="draw-slider" min="0" [max]="deck.cards.length" step="1" discrete>
+                <input matSliderThumb [(ngModel)]="deckDrawCount">
+            </mat-slider>
+            <mat-label class="draw-slider-label">{{deck.cards.length}}</mat-label>
+        </div>
+    </div>
+    <button mat-flat-button color="primary" (click)="onDeckDrawClick(deckDrawCount)"
+        [disabled]="!deck.cards.length || deckDrawCount === 0">Draw
+        ({{deckDrawCount}})</button>
+    <button mat-flat-button color="accent" (click)="deck.sort()" [disabled]="!deck.cards.length">Sort Deck</button>
+    <button mat-flat-button color="accent" (click)="deck.shuffle()" [disabled]="!deck.cards.length">Shuffle
+        Deck</button>
+    <button mat-button (click)="deck.reset()">Reset</button>
+</div>

@@ -1,0 +1,6 @@
+<mat-card *ngIf='card' class="card mat-elevation-z2">
+    <img [src]='card.imgUrl'/>
+    <button *ngIf="cardWithdrawn.observed" mat-mini-fab color='warn' (click)='onWithdrawClick()' class='withdraw-btn'>
+        <mat-icon>delete</mat-icon>
+    </button>
+</mat-card>

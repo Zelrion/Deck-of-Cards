@@ -1,0 +1,31 @@
+mat-drawer-container {
+    height: 100%;
+}
+
+mat-drawer {
+    padding: 1rem;
+    width: 14rem;
+}
+
+mat-tab-group {
+    height: 100%;
+}
+
+.card-display {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding-top: 1rem;
+}
+
+.mat-mdc-tab-body-wrapper {
+    flex-grow: 1;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
